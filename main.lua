@@ -1,5 +1,7 @@
 dong2lib = require("dong2lib")
 
+love.graphics.setFont(love.graphics.newFont(8))
+
 function love.joystickadded(joystick)
   local dong = dong2lib.new(joystick)
   if dong then 
@@ -21,6 +23,7 @@ function setBindings(dong)
     {
       XBOX_360={args={"A"}},
       OUYA={args={"O"}},
+      PS3={args={"CROSS"}},
     })
 
   dong:setBind("cancel",
@@ -28,6 +31,7 @@ function setBindings(dong)
     {
       XBOX_360={args={"B"}},
       OUYA={args={"A"}},
+      PS3={args={"CIRCLE"}},
     })
 
   dong:setBind("info",
@@ -35,6 +39,7 @@ function setBindings(dong)
     {
       XBOX_360={args={"Y"}},
       OUYA={args={"Y"}},
+      PS3={args={"TRIANGLE"}},
     })
 
   dong:setBind("reload",
@@ -42,6 +47,7 @@ function setBindings(dong)
     {
       XBOX_360={args={"X"}},
       OUYA={args={"U"}},
+      PS3={args={"SQUARE"}},
     })
 
   -- SPECIAL XBOX BUTTONS 
@@ -57,41 +63,50 @@ function setBindings(dong)
     {
       XBOX_360={args={"start"}},
       OUYA={args={"Y","RB"}},
+      PS3={args={"start"}},
     })
 
-  dong:setBind("score",
-    function(self,data)
-      if self._type == "OUYA" then
-        return data[1] and data[2]
-      else
-        return unpack(data)
-      end
-    end,
+  dong:setBind("menu",
+    function(self,data) return unpack(data) end,
     {
       XBOX_360={args={"select"}},
-      OUYA={args={"Y","LB"}}
+      OUYA={args={"menu"}},
+      PS3={args={"select"}},
     })
 
   -- TRIGGERS
 
   dong:setBind("zoom",
-    function(self,data) return unpack(data) end,
+    function(self,data)
+      if type(data[1]) == "number" then
+        return unpack(data)
+      else
+        return data[1] and 1 or -1
+      end 
+    end,
     {
       XBOX_360={args={"LT"}},
       OUYA={args={"LT"}},
+      PS3={args={"LT"}},
     })
 
   dong:setBind("shoot",
     function(self,data)
-      if data[1] > 0.1 and data[2] > 0.1 then
-        return 1
+
+      if type(data[1]) == "number" then
+        if data[1] > 0.1 and data[2] > 0.1 then
+          return 1
+        else
+          return 0
+        end
       else
-        return 0
-      end
+        return data[1] and 1 or 0
+      end 
     end,
     {
       XBOX_360={args={"RT","LT"}},
       OUYA={args={"RT","LT"}},
+      PS3={args={"RT","LT"}},
     })
 
   -- STICKS
@@ -101,6 +116,7 @@ function setBindings(dong)
     {
       XBOX_360={args={"LSX","LSY"},name="LS"},
       OUYA={args={"LSX","LSY"},name="LS"},
+      PS3={args={"LSX","LSY"},name="LS"},
     })
 
   dong:setBind("aim",
@@ -108,6 +124,7 @@ function setBindings(dong)
     {
       XBOX_360={args={"RSX","RSY"},name="RS"},
       OUYA={args={"RSX","RSY"},name="RS"},
+      PS3={args={"RSX","RSY"},name="RS"},
     })
 
   -- DPAD
@@ -123,7 +140,8 @@ function setBindings(dong)
     end,
     {
       XBOX_360={args={"DR","DL","DU","DD"},name="dpad"},
-      OUYA={args={"DR","DL","DU","DD"},name="dpad"}
+      OUYA={args={"DR","DL","DU","DD"},name="dpad"},
+      PS3={args={"DR","DL","DU","DD"},name="dpad"},
     })
 
 end
@@ -131,6 +149,12 @@ end
 function love.update(dt)
   for _,dong in pairs(dongs) do
     dong:update(dt)
+  end
+end
+
+function love.keypressed(key)
+   for _,dong in pairs(dongs) do
+    dong:keypressed(key)
   end
 end
 
@@ -161,7 +185,7 @@ function love.draw()
 
   line_height = 16
   padding = 128
-  local label_width = (love.graphics.getWidth()-padding*2)/8
+  local label_width = (love.graphics.getWidth()-padding*4)/8
   local value_width = label_width
   local column_width = label_width + value_width
 
@@ -170,20 +194,22 @@ function love.draw()
     local lx = (i-1)*column_width
     local vx = lx+label_width
 
-    print_button(dong,"confirm",lx,vx,0)
-    print_button(dong,"cancel",lx,vx,1)
-    print_button(dong,"info",lx,vx,2)
-    print_button(dong,"reload",lx,vx,3)
+    love.graphics.print(dong._joystick:getName(),padding/2+vx,padding)
 
-    print_button(dong,"pause",lx,vx,4)
-    print_button(dong,"score",lx,vx,5)
+    print_button(dong,"confirm",lx,vx,2)
+    print_button(dong,"cancel",lx,vx,3)
+    print_button(dong,"info",lx,vx,4)
+    print_button(dong,"reload",lx,vx,5)
 
-    print_axis(dong,"zoom",lx,vx,6)
-    print_axis(dong,"shoot",lx,vx,7)
+    print_button(dong,"pause",lx,vx,6)
+    print_button(dong,"menu",lx,vx,7)
 
-    print_axes(dong,"move",lx,vx,8)
-    print_axes(dong,"aim",lx,vx,9)
-    print_axes(dong,"map",lx,vx,10)
+    print_axis(dong,"zoom",lx,vx,8)
+    print_axis(dong,"shoot",lx,vx,9)
+
+    print_axes(dong,"move",lx,vx,10)
+    print_axes(dong,"aim",lx,vx,11)
+    print_axes(dong,"map",lx,vx,12)
 
   end
 

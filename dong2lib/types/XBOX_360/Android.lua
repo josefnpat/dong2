@@ -8,6 +8,7 @@ Android.maps = {
   LB = {type="button",value=13},
   RB = {type="button",value=14},
   start = {type="button",value=19},
+  select = {type="keyinstantcheck",value="escape"},
   LS = {type="button",value=17},
   RS = {type="button",value=18},
   DL = {type="button",value=4},

@@ -7,7 +7,7 @@ Linux.maps = {
   Y = {type="button",value=4},
   LB = {type="button",value=5},
   RB = {type="button",value=6},
---  select = {type="button",value=7}, -- Let's pretend that this button doesn't exist
+  select = {type="button",value=7}, -- Let's pretend that this button doesn't exist
   start = {type="button",value=8},
   menu = {type="button",value=9},
   RS = {type="button",value=10},

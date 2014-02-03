@@ -7,6 +7,7 @@ Android.maps = {
   A = {type="button",value=8},
   LB = {type="button",value=13},
   RB = {type="button",value=14},
+  menu = {type="keyinstantcheck",value="menu"},
   LS = {type="button",value=17},
   RS = {type="button",value=18},
   DL = {type="button",value=4},

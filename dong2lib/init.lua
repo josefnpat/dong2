@@ -24,6 +24,7 @@ function dong2.new(joystick)
 
   d._t = 0
   d._data = {}
+  d._key_instant_cache = {}
 
   for cType,cFullName in pairs(dong2.index) do
     if cFullName == d._joystick:getName() then
@@ -39,6 +40,11 @@ function dong2.new(joystick)
 
   -- Functions
   d.update = dong2.update
+
+  -- OUYA deps on this :(
+  d.keypressed = dong2.keypressed
+  d._key_instant_check = dong2._key_instant_check
+
   d.setBind = dong2.setBind
   d.getBind = dong2.getBind
   d.getBindName = dong2.getBindName
@@ -48,6 +54,19 @@ end
  
 function dong2:update(dt)
   self._t = self._t + dt
+end
+
+-- Wow, fuck you OUYA.
+function dong2:keypressed(key)
+  self._key_instant_cache[key] = true  
+end
+
+function dong2:_key_instant_check(key)
+  if self._key_instant_cache[key] then
+    self._key_instant_cache[key] = nil
+    return true
+  end
+  return false
 end
 
 function dong2:setBind(bName,bCallback,bMap,bNameReal)
@@ -86,16 +105,23 @@ function dong2.getBind(self,bName)
 
   local tempData = {}
   for _,mapval in pairs(self._data[bName].map[self._type].args) do
-
     local mapping = self._map.maps[mapval]
+
+    assert(mapping,self._type..":"..love._os.." does not have the mapping `"..mapval.."`. Try mapping `"..bName.."` for `"..self._type.."` to something else?")
+
     if mapping.type == "button" then
       table.insert(tempData,self._joystick:isDown(mapping.value))
+    elseif mapping.type == "keyb" then
+      table.insert(tempData,love.keyboard.isDown(mapping.value))
+    elseif mapping.type == "keyinstantcheck" then -- wtf OUYA
+      table.insert(tempData,self:_key_instant_check(mapping.value))
     elseif mapping.type == "axis" then
       local axis_value = self._joystick:getAxis(mapping.value)
       --TODO: format axis value according to the min, max and default
       --TODO: add deadzone handlers
       table.insert(tempData,axis_value)
     end
+
   end
 
   return unpack({ self._data[bName].callback(self,tempData) })
@@ -103,11 +129,12 @@ function dong2.getBind(self,bName)
 end
 
 function dong2:getBindName(bName)
-
   assert(self._data[bName] ~= nil,"Binding `"..bName.."` does not exist.")
 
   local spec_data = self._data[bName].map[self._type]
 
+  assert(spec_data,"`"..bName.."` is not configured for `"..self._type.."`.") 
+ 
   if spec_data.name then
     return spec_data.name
   else
