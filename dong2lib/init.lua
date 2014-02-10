@@ -17,25 +17,33 @@ dong2.libDirName = "dong2lib"
 dong2.index = require(dong2.libDirName..'.index')
 
 function dong2.new(joystick)
+
   local d = {}
-
-  -- Internals
-  d._joystick = joystick
-
   d._t = 0
   d._data = {}
   d._key_instant_cache = {}
 
-  for cType,cFullName in pairs(dong2.index) do
-    if cFullName == d._joystick:getName() then
-      d._map = require(dong2.libDirName..".types."..cType.."."..love._os:gsub("%s+", ""))
-      d._type = cType
+  if joystick then
+    -- Internals
+    d._joystick = joystick
+
+    for cType,cFullName in pairs(dong2.index) do
+      if cFullName == d._joystick:getName() then
+        d._map = require(dong2.libDirName..".types."..cType.."."..love._os:gsub("%s+", ""))
+        d._type = cType
+      end
     end
-  end
-  if d._map == nil then
-    -- TODO: write a teaching system
-    print("There are no known mappings for controller `"..joystick:getName().."`.")
-    return
+
+    if d._map == nil then
+      -- TODO: write a teaching system
+      print("There are no known mappings for controller `"..joystick:getName().."`.")
+      return
+    end
+
+  else
+    d._type = "KEYBMOUSE"
+    d._default = "Keyboard and Mouse"
+    d._map = {maps={}}
   end
 
   -- Functions
@@ -48,6 +56,7 @@ function dong2.new(joystick)
   d.setBind = dong2.setBind
   d.getBind = dong2.getBind
   d.getBindName = dong2.getBindName
+  d.getName = dong2.getName
   
   return d
 end
@@ -105,7 +114,23 @@ function dong2.getBind(self,bName)
 
   local tempData = {}
   for _,mapval in pairs(self._data[bName].map[self._type].args) do
-    local mapping = self._map.maps[mapval]
+    local mapping
+    if self._type == "KEYBMOUSE" then
+      if self._data[bName].map[self._type].mouse then
+        -- Raw mouse input
+        if mapval == "x" or mapval == "y" then
+          -- Raw mouse axis
+          mapping = {type="mousepos",value=mapval}
+        else
+          mapping = {type="mouse",value=mapval}
+        end
+      else
+        -- Raw keyboard input
+        mapping = {type="keyb",value=mapval}
+      end
+    else
+      mapping = self._map.maps[mapval]
+    end
 
     assert(mapping,self._type..":"..love._os.." does not have the mapping `"..mapval.."`. Try mapping `"..bName.."` for `"..self._type.."` to something else?")
 
@@ -113,6 +138,10 @@ function dong2.getBind(self,bName)
       table.insert(tempData,self._joystick:isDown(mapping.value))
     elseif mapping.type == "keyb" then
       table.insert(tempData,love.keyboard.isDown(mapping.value))
+    elseif mapping.type == "mousepos" then
+      table.insert(tempData,love.mouse["get"..string.upper(mapping.value)]())
+    elseif mapping.type == "mouse" then
+      table.insert(tempData,love.mouse.isDown(mapping.value))
     elseif mapping.type == "keyinstantcheck" then -- wtf OUYA
       table.insert(tempData,self:_key_instant_check(mapping.value))
     elseif mapping.type == "axis" then
@@ -140,6 +169,10 @@ function dong2:getBindName(bName)
   else
     return table.concat(self._data[bName].map[self._type].args,"+")
   end
+end
+
+function dong2:getName()
+  return self._joystick or self._default
 end
 
 return dong2

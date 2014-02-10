@@ -12,10 +12,12 @@ end
 
 function love.load()
   dongs = {}
+  local keyb_dong = dong2lib.new()
+  setBindings(keyb_dong)
+  table.insert(dongs,keyb_dong) -- Keyboard and mouse
 end
 
 function setBindings(dong)
-
   -- FACE BUTTONS
 
   dong:setBind("confirm",
@@ -24,6 +26,7 @@ function setBindings(dong)
       XBOX_360={args={"A"}},
       OUYA={args={"O"}},
       PS3={args={"CROSS"}},
+      KEYBMOUSE={args={"return"}},
     })
 
   dong:setBind("cancel",
@@ -32,6 +35,7 @@ function setBindings(dong)
       XBOX_360={args={"B"}},
       OUYA={args={"A"}},
       PS3={args={"CIRCLE"}},
+      KEYBMOUSE={args={"backspace"}},
     })
 
   dong:setBind("info",
@@ -40,6 +44,7 @@ function setBindings(dong)
       XBOX_360={args={"Y"}},
       OUYA={args={"Y"}},
       PS3={args={"TRIANGLE"}},
+      KEYBMOUSE={args={"h"},name="H"},
     })
 
   dong:setBind("reload",
@@ -48,6 +53,7 @@ function setBindings(dong)
       XBOX_360={args={"X"}},
       OUYA={args={"U"}},
       PS3={args={"SQUARE"}},
+      KEYBMOUSE={args={"r"},name="R"},
     })
 
   -- SPECIAL XBOX BUTTONS 
@@ -64,6 +70,7 @@ function setBindings(dong)
       XBOX_360={args={"start"}},
       OUYA={args={"Y","RB"}},
       PS3={args={"start"}},
+      KEYBMOUSE={args={"p"},name="P"},
     })
 
   dong:setBind("menu",
@@ -72,13 +79,16 @@ function setBindings(dong)
       XBOX_360={args={"select"}},
       OUYA={args={"menu"}},
       PS3={args={"select"}},
+      KEYBMOUSE={args={"m"},name="M"},
     })
 
   -- TRIGGERS
 
   dong:setBind("zoom",
     function(self,data)
-      if type(data[1]) == "number" then
+      if type(data[1]) == "boolean" then
+        return data[1] and 1 or -1
+      elseif type(data[1]) == "number" then
         return unpack(data)
       else
         return data[1] and 1 or -1
@@ -88,6 +98,7 @@ function setBindings(dong)
       XBOX_360={args={"LT"}},
       OUYA={args={"LT"}},
       PS3={args={"LT"}},
+      KEYBMOUSE={args={"r"},name="RMB",mouse=true},
     })
 
   dong:setBind("shoot",
@@ -107,16 +118,29 @@ function setBindings(dong)
       XBOX_360={args={"RT","LT"}},
       OUYA={args={"RT","LT"}},
       PS3={args={"RT","LT"}},
+      KEYBMOUSE={args={"l"},name="LMB",mouse=true},
     })
 
   -- STICKS
   
   dong:setBind("move",
-    function(self,data) return unpack(data) end,
+    function(self,data)
+      if type(data[1]) == "boolean" then -- WASD
+        local x,y = 0,0
+        if data[1] == true then y = y - 1 end
+        if data[2] == true then x = x - 1 end
+        if data[3] == true then y = y + 1 end
+        if data[4] == true then x = x + 1 end
+        return x,y
+      else
+        return unpack(data)
+      end
+    end,
     {
       XBOX_360={args={"LSX","LSY"},name="LS"},
       OUYA={args={"LSX","LSY"},name="LS"},
       PS3={args={"LSX","LSY"},name="LS"},
+      KEYBMOUSE={args={"w","a","s","d"},name="WASD"},
     })
 
   dong:setBind("aim",
@@ -125,6 +149,7 @@ function setBindings(dong)
       XBOX_360={args={"RSX","RSY"},name="RS"},
       OUYA={args={"RSX","RSY"},name="RS"},
       PS3={args={"RSX","RSY"},name="RS"},
+      KEYBMOUSE={args={"x","y"},name="Mouse",mouse=true},
     })
 
   -- DPAD
@@ -142,6 +167,7 @@ function setBindings(dong)
       XBOX_360={args={"DR","DL","DU","DD"},name="dpad"},
       OUYA={args={"DR","DL","DU","DD"},name="dpad"},
       PS3={args={"DR","DL","DU","DD"},name="dpad"},
+      KEYBMOUSE={args={"up","down","left","right"},name="Arrow Keys"},
     })
 
 end
@@ -194,7 +220,7 @@ function love.draw()
     local lx = (i-1)*column_width
     local vx = lx+label_width
 
-    love.graphics.print(dong._joystick:getName(),padding/2+vx,padding)
+    love.graphics.print(dong:getName(),padding/2+vx,padding)
 
     print_button(dong,"confirm",lx,vx,2)
     print_button(dong,"cancel",lx,vx,3)
