@@ -172,7 +172,7 @@ function dong2:getBindName(bName)
 end
 
 function dong2:getName()
-  return self._joystick or self._default
+  return self._joystick and self._joystick:getName() or self._default
 end
 
 return dong2
