@@ -27,16 +27,23 @@ function dong2.new(joystick)
     -- Internals
     d._joystick = joystick
 
+    local success
     for cType,cFullName in pairs(dong2.index) do
       if cFullName == d._joystick:getName() then
-        d._map = require(dong2.libDirName..".types."..cType.."."..love._os:gsub("%s+", ""))
+        local ftarget =
+          dong2.libDirName..".types."..cType.."."..love._os:gsub("%s+", "")
+        success,d._map = pcall(require,ftarget)
+        if success == false then
+          print("Controller has index, but no map for os: `"..ftarget.."`.")
+        end
         d._type = cType
+        break
       end
     end
 
-    if d._map == nil then
+    if success == false or d._map == nil then
       -- TODO: write a teaching system
-      print("There are no known mappings for controller `"..joystick:getName().."`.")
+      print("Unable to map `"..joystick:getName().."`.")
       return
     end
 
