@@ -13,7 +13,7 @@ end
 
 local dong2 = {}
 
-dong2.libDirName = "dong2lib"
+dong2.libDirName = (...):gsub('%.init$', '') -- "my-package"
 dong2.index = require(dong2.libDirName..'.index')
 
 function dong2.new(joystick)
