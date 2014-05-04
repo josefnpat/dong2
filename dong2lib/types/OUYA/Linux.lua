@@ -1,13 +1,13 @@
-local Linux = {}
+local controller = {}
 
-Linux.maps = {
+controller.maps = {
   O = {type="button",value=1},
   U = {type="button",value=2},
   Y = {type="button",value=3},
   A = {type="button",value=4},
   LB = {type="button",value=5},
   RB = {type="button",value=6},
-  menu = {type="button",value=15},--This flickers and only lasts for an instant!
+  menu = {type="button",value=15},
   LS = {type="button",value=7},
   RS = {type="button",value=8},
   DL = {type="button",value=11},
@@ -22,4 +22,4 @@ Linux.maps = {
   RT= {type="axis",min=-1,default=-1,max=1,value=6},
 }
 
-return Linux
+return controller

@@ -18,10 +18,10 @@ controller.maps = {
   DD = {type="button",value=7},
   LSX= {type="axis",min=-1,default=0,max=1,value=1},
   LSY= {type="axis",min=-1,default=0,max=1,value=2},
-  LT= {type="button",value=9},
+  LT= {type="button",value=9}, -- Not an axis
   RSX= {type="axis",min=-1,default=0,max=1,value=3},
   RSY= {type="axis",min=-1,default=0,max=1,value=4},
-  RT= {type="button",value=10},
+  RT= {type="button",value=10}, -- Not an axis
 }
 
 return controller

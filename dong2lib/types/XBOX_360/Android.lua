@@ -1,6 +1,6 @@
-local Android = {}
+local controller = {}
 
-Android.maps = {
+controller.maps = {
   A = {type="button",value=1},
   X = {type="button",value=3},
   Y = {type="button",value=4},
@@ -23,4 +23,4 @@ Android.maps = {
   RT= {type="axis",min=-1,default=-1,max=1,value=6},
 }
 
-return Android
+return controller

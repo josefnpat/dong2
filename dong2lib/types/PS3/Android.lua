@@ -1,14 +1,14 @@
-local Android = {}
+local controller = {}
 
-Android.maps = {
+controller.maps = {
   CROSS = {type="button",value=1},
   SQUARE = {type="button",value=3},
   TRIANGLE = {type="button",value=4},
   CIRCLE = {type="button",value=2},
   LB = {type="button",value=10},
   RB = {type="button",value=11},
-  menu = {type="keyinstantcheck",value="menu"},--?
-  select = {type="keyinstantcheck",value="escape"},--?
+  menu = {type="keyinstantcheck",value="menu"},
+  select = {type="keyinstantcheck",value="escape"},
   start = {type="button",value=7},
   LS = {type="button",value=8},
   RS = {type="button",value=9},
@@ -24,4 +24,4 @@ Android.maps = {
   RT= {type="axis",min=-1,default=-1,max=1,value=14},
 }
 
-return Android
+return controller
