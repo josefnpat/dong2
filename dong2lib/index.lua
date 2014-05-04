@@ -1,9 +1,17 @@
 local index = {
-  XBOX_360 = "Xbox 360 Wireless Receiver",
-  OUYA = "OUYA Game Controller",
-  PS3 = love._os == "Android" and
-    "PLAYSTATION(R)3 Controller" or -- OUYA
-    "Sony PLAYSTATION(R)3 Controller" -- EVERYONE ELSE
+  XBOX_360 = {"Xbox 360 Wireless Receiver"},
+  XBOX_360_XINPUT = {
+    "XInput Controller #1",
+    "XInput Controller #2",
+    "XInput Controller #3",
+    "XInput Controller #4"
+  },
+  OUYA = {"OUYA Game Controller"},
+  PS3 = {
+    "MotioninJoy Virtual Game Controller", -- Windows w/ MotioninJoy
+    "PLAYSTATION(R)3 Controller", -- OUYA
+    "Sony PLAYSTATION(R)3 Controller"
+  } -- EVERYONE ELSE
 }
 
 return index

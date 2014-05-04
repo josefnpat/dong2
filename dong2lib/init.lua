@@ -28,16 +28,18 @@ function dong2.new(joystick)
     d._joystick = joystick
 
     local success
-    for cType,cFullName in pairs(dong2.index) do
-      if cFullName == d._joystick:getName() then
-        local ftarget =
-          dong2.libDirName..".types."..cType.."."..love._os:gsub("%s+", "")
-        success,d._map = pcall(require,ftarget)
-        if success == false then
-          print("Controller has index, but no map for os: `"..ftarget.."`.")
+    for cType,cFullNames in pairs(dong2.index) do
+      for _,cFullName in pairs(cFullNames) do
+        if cFullName == d._joystick:getName() then
+          local ftarget =
+            dong2.libDirName..".types."..cType.."."..love._os:gsub("%s+", "")
+          success,d._map = pcall(require,ftarget)
+          if success == false then
+            print("Controller has index, but no map for os: `"..ftarget.."`.")
+          end
+          d._type = cType
+          break
         end
-        d._type = cType
-        break
       end
     end
 
