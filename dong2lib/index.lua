@@ -1,5 +1,8 @@
 local index = {
-  XBOX_360 = {"Xbox 360 Wireless Receiver"},
+  XBOX_360 = {
+    "Xbox 360 Wireless Receiver",
+    "Wireless 360 Controller", -- OS X
+  },
   XBOX_360_XINPUT = {
     "XInput Controller #1",
     "XInput Controller #2",
