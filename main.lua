@@ -24,6 +24,7 @@ function setBindings(dong)
     function(self,data) return unpack(data) end,
     {
       XBOX_360={args={"A"}},
+      XBOX_360_XINPUT={args={"A"}},
       OUYA={args={"O"}},
       PS3={args={"CROSS"}},
       KEYBMOUSE={args={"return"}},
@@ -33,6 +34,7 @@ function setBindings(dong)
     function(self,data) return unpack(data) end,
     {
       XBOX_360={args={"B"}},
+      XBOX_360_XINPUT={args={"B"}},
       OUYA={args={"A"}},
       PS3={args={"CIRCLE"}},
       KEYBMOUSE={args={"backspace"}},
@@ -42,6 +44,7 @@ function setBindings(dong)
     function(self,data) return unpack(data) end,
     {
       XBOX_360={args={"Y"}},
+      XBOX_360_XINPUT={args={"Y"}},
       OUYA={args={"Y"}},
       PS3={args={"TRIANGLE"}},
       KEYBMOUSE={args={"h"},name="H"},
@@ -51,6 +54,7 @@ function setBindings(dong)
     function(self,data) return unpack(data) end,
     {
       XBOX_360={args={"X"}},
+      XBOX_360_XINPUT={args={"X"}},
       OUYA={args={"U"}},
       PS3={args={"SQUARE"}},
       KEYBMOUSE={args={"r"},name="R"},
@@ -68,6 +72,7 @@ function setBindings(dong)
     end,
     {
       XBOX_360={args={"start"}},
+      XBOX_360_XINPUT={args={"start"}},
       OUYA={args={"Y","RB"}},
       PS3={args={"start"}},
       KEYBMOUSE={args={"p"},name="P"},
@@ -77,6 +82,7 @@ function setBindings(dong)
     function(self,data) return unpack(data) end,
     {
       XBOX_360={args={"select"}},
+      XBOX_360_XINPUT={args={"select"}},
       OUYA={args={"menu"}},
       PS3={args={"select"}},
       KEYBMOUSE={args={"m"},name="M"},
@@ -96,6 +102,7 @@ function setBindings(dong)
     end,
     {
       XBOX_360={args={"LT"}},
+      XBOX_360_XINPUT={args={"LT"}},
       OUYA={args={"LT"}},
       PS3={args={"LT"}},
       KEYBMOUSE={args={"r"},name="RMB",mouse=true},
@@ -116,6 +123,7 @@ function setBindings(dong)
     end,
     {
       XBOX_360={args={"RT","LT"}},
+      XBOX_360_XINPUT={args={"RT","LT"}},
       OUYA={args={"RT","LT"}},
       PS3={args={"RT","LT"}},
       KEYBMOUSE={args={"l"},name="LMB",mouse=true},
@@ -138,6 +146,7 @@ function setBindings(dong)
     end,
     {
       XBOX_360={args={"LSX","LSY"},name="LS"},
+      XBOX_360_XINPUT={args={"LSX","LSY"},name="LS"},
       OUYA={args={"LSX","LSY"},name="LS"},
       PS3={args={"LSX","LSY"},name="LS"},
       KEYBMOUSE={args={"w","a","s","d"},name="WASD"},
@@ -147,6 +156,7 @@ function setBindings(dong)
     function(self,data) return unpack(data) end,
     {
       XBOX_360={args={"RSX","RSY"},name="RS"},
+      XBOX_360_XINPUT={args={"RSX","RSY"},name="RS"},
       OUYA={args={"RSX","RSY"},name="RS"},
       PS3={args={"RSX","RSY"},name="RS"},
       KEYBMOUSE={args={"x","y"},name="Mouse",mouse=true},
@@ -165,6 +175,7 @@ function setBindings(dong)
     end,
     {
       XBOX_360={args={"DR","DL","DU","DD"},name="dpad"},
+      XBOX_360_XINPUT={args={"DR","DL","DU","DD"},name="dpad"},
       OUYA={args={"DR","DL","DU","DD"},name="dpad"},
       PS3={args={"DR","DL","DU","DD"},name="dpad"},
       KEYBMOUSE={args={"up","down","left","right"},name="Arrow Keys"},
