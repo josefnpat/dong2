@@ -28,6 +28,7 @@ function setBindings(dong)
       OUYA={args={"O"}},
       PS3={args={"CROSS"}},
       KEYBMOUSE={args={"return"}},
+      RETROLINK_NES={args={"A"}},
     })
 
   dong:setBind("cancel",
@@ -38,6 +39,7 @@ function setBindings(dong)
       OUYA={args={"A"}},
       PS3={args={"CIRCLE"}},
       KEYBMOUSE={args={"backspace"}},
+      RETROLINK_NES={args={"B"}},
     })
 
   dong:setBind("info",
@@ -48,6 +50,7 @@ function setBindings(dong)
       OUYA={args={"Y"}},
       PS3={args={"TRIANGLE"}},
       KEYBMOUSE={args={"h"},name="H"},
+      RETROLINK_NES={args={}},
     })
 
   dong:setBind("reload",
@@ -58,6 +61,7 @@ function setBindings(dong)
       OUYA={args={"U"}},
       PS3={args={"SQUARE"}},
       KEYBMOUSE={args={"r"},name="R"},
+      RETROLINK_NES={args={}},
     })
 
   -- SPECIAL XBOX BUTTONS 
@@ -76,6 +80,7 @@ function setBindings(dong)
       OUYA={args={"Y","RB"}},
       PS3={args={"start"}},
       KEYBMOUSE={args={"p"},name="P"},
+      RETROLINK_NES={args={"start"}},
     })
 
   dong:setBind("menu",
@@ -86,6 +91,7 @@ function setBindings(dong)
       OUYA={args={"menu"}},
       PS3={args={"select"}},
       KEYBMOUSE={args={"m"},name="M"},
+      RETROLINK_NES={args={"select"}},
     })
 
   -- TRIGGERS
@@ -106,6 +112,7 @@ function setBindings(dong)
       OUYA={args={"LT"}},
       PS3={args={"LT"}},
       KEYBMOUSE={args={"r"},name="RMB",mouse=true},
+      RETROLINK_NES={args={}},
     })
 
   dong:setBind("shoot",
@@ -127,6 +134,7 @@ function setBindings(dong)
       OUYA={args={"RT","LT"}},
       PS3={args={"RT","LT"}},
       KEYBMOUSE={args={"l"},name="LMB",mouse=true},
+      RETROLINK_NES={args={}},
     })
 
   -- STICKS
@@ -150,6 +158,7 @@ function setBindings(dong)
       OUYA={args={"LSX","LSY"},name="LS"},
       PS3={args={"LSX","LSY"},name="LS"},
       KEYBMOUSE={args={"w","a","s","d"},name="WASD"},
+      RETROLINK_NES={args={"X","Y"},name="XY"},
     })
 
   dong:setBind("aim",
@@ -160,6 +169,7 @@ function setBindings(dong)
       OUYA={args={"RSX","RSY"},name="RS"},
       PS3={args={"RSX","RSY"},name="RS"},
       KEYBMOUSE={args={"x","y"},name="Mouse",mouse=true},
+      RETROLINK_NES={args={}},
     })
 
   -- DPAD
@@ -179,6 +189,7 @@ function setBindings(dong)
       OUYA={args={"DR","DL","DU","DD"},name="dpad"},
       PS3={args={"DR","DL","DU","DD"},name="dpad"},
       KEYBMOUSE={args={"up","down","left","right"},name="Arrow Keys"},
+      RETROLINK_NES={args={}},
     })
 
 end
@@ -198,6 +209,8 @@ end
 function print_axes(dong,name,lx,vx,l)
   love.graphics.print(name..": "..dong:getBindName(name),lx+padding,line_height*l+padding)
   local dirx,diry = dong:getBind(name)
+  dirx = dirx or 0
+  diry = diry or 0
   love.graphics.print("X:"..round(dirx,2).." Y:"..round(diry,2),vx+padding,line_height*l+padding)
 end
 
