@@ -13,8 +13,9 @@ local index = {
   PS3 = {
     "MotioninJoy Virtual Game Controller", -- Windows w/ MotioninJoy
     "PLAYSTATION(R)3 Controller", -- OUYA
-    "Sony PLAYSTATION(R)3 Controller"
-  } -- EVERYONE ELSE
+    "Sony PLAYSTATION(R)3 Controller" -- EVERYONE ELSE
+  },
+  RETROLINK_NES = {"USB Gamepad"}
 }
 
 return index
