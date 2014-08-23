@@ -153,6 +153,8 @@ function dong2.getBind(self,bName)
       table.insert(tempData,love.mouse.isDown(mapping.value))
     elseif mapping.type == "keyinstantcheck" then -- wtf OUYA
       table.insert(tempData,self:_key_instant_check(mapping.value))
+    elseif mapping.type == "hat" then -- Wooo, hats
+      table.insert(tempData,self._joystick:getHat(mapping.value))
     elseif mapping.type == "axis" then
       local axis_value = self._joystick:getAxis(mapping.value)
       --TODO: format axis value according to the min, max and default

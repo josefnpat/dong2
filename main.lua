@@ -187,10 +187,17 @@ function setBindings(dong)
   dong:setBind("map",
     function(self,data)
       local x,y = 0,0
-      if data[1] == true then x = x + 1 end
-      if data[2] == true then x = x - 1 end
-      if data[3] == true then y = y - 1 end
-      if data[4] == true then y = y + 1 end
+      if self._type == "LOGITECH_F310" then
+        if string.sub(data[1],1,1)   == "r" then x = x + 1 end
+        if string.sub(data[2],1,1)   == "l" then x = x - 1 end
+        if string.sub(data[3],-1,-1) == "u" then y = y - 1 end
+        if string.sub(data[4],-1,-1) == "d" then y = y + 1 end
+      else
+        if data[1] == true then x = x + 1 end
+        if data[2] == true then x = x - 1 end
+        if data[3] == true then y = y - 1 end
+        if data[4] == true then y = y + 1 end
+      end
       return x,y
     end,
     {
@@ -200,7 +207,7 @@ function setBindings(dong)
       PS3={args={"DR","DL","DU","DD"},name="dpad"},
       KEYBMOUSE={args={"up","down","left","right"},name="Arrow Keys"},
       RETROLINK_NES={args={}},
-      LOGITECH_F310={args={}},
+      LOGITECH_F310={args={"DR","DL","DU","DD"},name="dpad"},
     })
 
 end
