@@ -29,6 +29,7 @@ function setBindings(dong)
       PS3={args={"CROSS"}},
       KEYBMOUSE={args={"return"}},
       RETROLINK_NES={args={"A"}},
+      LOGITECH_F310={args={"A"}},
     })
 
   dong:setBind("cancel",
@@ -40,6 +41,7 @@ function setBindings(dong)
       PS3={args={"CIRCLE"}},
       KEYBMOUSE={args={"backspace"}},
       RETROLINK_NES={args={"B"}},
+      LOGITECH_F310={args={"B"}},
     })
 
   dong:setBind("info",
@@ -51,6 +53,7 @@ function setBindings(dong)
       PS3={args={"TRIANGLE"}},
       KEYBMOUSE={args={"h"},name="H"},
       RETROLINK_NES={args={}},
+      LOGITECH_F310={args={"Y"}},
     })
 
   dong:setBind("reload",
@@ -62,6 +65,7 @@ function setBindings(dong)
       PS3={args={"SQUARE"}},
       KEYBMOUSE={args={"r"},name="R"},
       RETROLINK_NES={args={}},
+      LOGITECH_F310={args={"X"}},
     })
 
   -- SPECIAL XBOX BUTTONS 
@@ -81,6 +85,7 @@ function setBindings(dong)
       PS3={args={"start"}},
       KEYBMOUSE={args={"p"},name="P"},
       RETROLINK_NES={args={"start"}},
+      LOGITECH_F310={args={"start"}},
     })
 
   dong:setBind("menu",
@@ -92,6 +97,7 @@ function setBindings(dong)
       PS3={args={"select"}},
       KEYBMOUSE={args={"m"},name="M"},
       RETROLINK_NES={args={"select"}},
+      LOGITECH_F310={args={"select"}},
     })
 
   -- TRIGGERS
@@ -113,6 +119,7 @@ function setBindings(dong)
       PS3={args={"LT"}},
       KEYBMOUSE={args={"r"},name="RMB",mouse=true},
       RETROLINK_NES={args={}},
+      LOGITECH_F310={args={"LT"}},
     })
 
   dong:setBind("shoot",
@@ -135,6 +142,7 @@ function setBindings(dong)
       PS3={args={"RT","LT"}},
       KEYBMOUSE={args={"l"},name="LMB",mouse=true},
       RETROLINK_NES={args={}},
+      LOGITECH_F310={args={"RT","LT"}},
     })
 
   -- STICKS
@@ -159,6 +167,7 @@ function setBindings(dong)
       PS3={args={"LSX","LSY"},name="LS"},
       KEYBMOUSE={args={"w","a","s","d"},name="WASD"},
       RETROLINK_NES={args={"X","Y"},name="XY"},
+      LOGITECH_F310={args={"LSX","LSY",name="LS"}},
     })
 
   dong:setBind("aim",
@@ -170,6 +179,7 @@ function setBindings(dong)
       PS3={args={"RSX","RSY"},name="RS"},
       KEYBMOUSE={args={"x","y"},name="Mouse",mouse=true},
       RETROLINK_NES={args={}},
+      LOGITECH_F310={args={"RSX","RSY",name="RS"}},
     })
 
   -- DPAD
@@ -190,6 +200,7 @@ function setBindings(dong)
       PS3={args={"DR","DL","DU","DD"},name="dpad"},
       KEYBMOUSE={args={"up","down","left","right"},name="Arrow Keys"},
       RETROLINK_NES={args={}},
+      LOGITECH_F310={args={}},
     })
 
 end
