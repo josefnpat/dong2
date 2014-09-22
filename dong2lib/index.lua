@@ -16,7 +16,10 @@ local index = {
     "Sony PLAYSTATION(R)3 Controller" -- EVERYONE ELSE
   },
   RETROLINK_NES = {"USB Gamepad "},
-  LOGITECH_F310 = {"Generic X-Box pad"},
+  LOGITECH_F310 = {
+    "Generic X-Box pad",
+    "Logitech Gamepad F310"
+  },
 }
 
 return index
