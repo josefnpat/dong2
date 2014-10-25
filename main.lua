@@ -24,6 +24,7 @@ function setBindings(dong)
     function(self,data) return unpack(data) end,
     {
       XBOX_360={args={"A"}},
+      XBOX_360_WIRED={args={"A"}},
       XBOX_360_XINPUT={args={"A"}},
       OUYA={args={"O"}},
       PS3={args={"CROSS"}},
@@ -36,6 +37,7 @@ function setBindings(dong)
     function(self,data) return unpack(data) end,
     {
       XBOX_360={args={"B"}},
+      XBOX_360_WIRED={args={"B"}},
       XBOX_360_XINPUT={args={"B"}},
       OUYA={args={"A"}},
       PS3={args={"CIRCLE"}},
@@ -48,6 +50,7 @@ function setBindings(dong)
     function(self,data) return unpack(data) end,
     {
       XBOX_360={args={"Y"}},
+      XBOX_360_WIRED={args={"Y"}},
       XBOX_360_XINPUT={args={"Y"}},
       OUYA={args={"Y"}},
       PS3={args={"TRIANGLE"}},
@@ -60,6 +63,7 @@ function setBindings(dong)
     function(self,data) return unpack(data) end,
     {
       XBOX_360={args={"X"}},
+      XBOX_360_WIRED={args={"X"}},
       XBOX_360_XINPUT={args={"X"}},
       OUYA={args={"U"}},
       PS3={args={"SQUARE"}},
@@ -80,6 +84,7 @@ function setBindings(dong)
     end,
     {
       XBOX_360={args={"start"}},
+      XBOX_360_WIRED={args={"start"}},
       XBOX_360_XINPUT={args={"start"}},
       OUYA={args={"Y","RB"}},
       PS3={args={"start"}},
@@ -92,6 +97,7 @@ function setBindings(dong)
     function(self,data) return unpack(data) end,
     {
       XBOX_360={args={"select"}},
+      XBOX_360_WIRED={args={"select"}},
       XBOX_360_XINPUT={args={"select"}},
       OUYA={args={"menu"}},
       PS3={args={"select"}},
@@ -114,6 +120,7 @@ function setBindings(dong)
     end,
     {
       XBOX_360={args={"LT"}},
+      XBOX_360_WIRED={args={"LT"}},
       XBOX_360_XINPUT={args={"LT"}},
       OUYA={args={"LT"}},
       PS3={args={"LT"}},
@@ -137,6 +144,7 @@ function setBindings(dong)
     end,
     {
       XBOX_360={args={"RT","LT"}},
+      XBOX_360_WIRED={args={"RT","LT"}},
       XBOX_360_XINPUT={args={"RT","LT"}},
       OUYA={args={"RT","LT"}},
       PS3={args={"RT","LT"}},
@@ -162,6 +170,7 @@ function setBindings(dong)
     end,
     {
       XBOX_360={args={"LSX","LSY"},name="LS"},
+      XBOX_360_WIRED={args={"LSX","LSY"},name="LS"},
       XBOX_360_XINPUT={args={"LSX","LSY"},name="LS"},
       OUYA={args={"LSX","LSY"},name="LS"},
       PS3={args={"LSX","LSY"},name="LS"},
@@ -174,6 +183,7 @@ function setBindings(dong)
     function(self,data) return unpack(data) end,
     {
       XBOX_360={args={"RSX","RSY"},name="RS"},
+      XBOX_360_WIRED={args={"RSX","RSY"},name="RS"},
       XBOX_360_XINPUT={args={"RSX","RSY"},name="RS"},
       OUYA={args={"RSX","RSY"},name="RS"},
       PS3={args={"RSX","RSY"},name="RS"},
@@ -187,7 +197,8 @@ function setBindings(dong)
   dong:setBind("map",
     function(self,data)
       local x,y = 0,0
-      if self._type == "LOGITECH_F310" then
+      if self._type == "LOGITECH_F310" or
+        self._type == "XBOX_360_WIRED" then
         if string.sub(data[1],1,1)   == "r" then x = x + 1 end
         if string.sub(data[2],1,1)   == "l" then x = x - 1 end
         if string.sub(data[3],-1,-1) == "u" then y = y - 1 end
@@ -202,6 +213,7 @@ function setBindings(dong)
     end,
     {
       XBOX_360={args={"DR","DL","DU","DD"},name="dpad"},
+      XBOX_360_WIRED={args={"DR","DL","DU","DD"},name="dpad"},
       XBOX_360_XINPUT={args={"DR","DL","DU","DD"},name="dpad"},
       OUYA={args={"DR","DL","DU","DD"},name="dpad"},
       PS3={args={"DR","DL","DU","DD"},name="dpad"},

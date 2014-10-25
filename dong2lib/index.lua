@@ -3,6 +3,9 @@ local index = {
     "Xbox 360 Wireless Receiver",
     "Wireless 360 Controller", -- OS X
   },
+  XBOX_360_WIRED = {
+    "Microsoft X-Box 360 pad",
+  },
   XBOX_360_XINPUT = {
     "XInput Controller #1",
     "XInput Controller #2",
