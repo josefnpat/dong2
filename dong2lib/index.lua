@@ -21,7 +21,8 @@ local index = {
   RETROLINK_NES = {"USB Gamepad "},
   LOGITECH_F310 = {
     "Generic X-Box pad",
-    "Logitech Gamepad F310"
+    "Logitech Gamepad F310",
+    "Logitech Dual Action",
   },
 }
 
