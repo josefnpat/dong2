@@ -24,6 +24,9 @@ local index = {
     "Logitech Gamepad F310",
     "Logitech Dual Action",
   },
+  ARCHOS_GAMEPAD2 = {
+    "joy_key"
+  },
 }
 
 return index
