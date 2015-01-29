@@ -30,6 +30,7 @@ function setBindings(dong)
       PS3={args={"CROSS"}},
       KEYBMOUSE={args={"return"}},
       RETROLINK_NES={args={"A"}},
+      SMARTJOY_FSS2_SNES={args={"A"}},
       LOGITECH_F310={args={"A"}},
     })
 
@@ -43,6 +44,7 @@ function setBindings(dong)
       PS3={args={"CIRCLE"}},
       KEYBMOUSE={args={"backspace"}},
       RETROLINK_NES={args={"B"}},
+      SMARTJOY_FSS2_SNES={args={"B"}},
       LOGITECH_F310={args={"B"}},
     })
 
@@ -56,6 +58,7 @@ function setBindings(dong)
       PS3={args={"TRIANGLE"}},
       KEYBMOUSE={args={"h"},name="H"},
       RETROLINK_NES={args={}},
+      SMARTJOY_FSS2_SNES={args={"X"}},
       LOGITECH_F310={args={"Y"}},
     })
 
@@ -69,6 +72,7 @@ function setBindings(dong)
       PS3={args={"SQUARE"}},
       KEYBMOUSE={args={"r"},name="R"},
       RETROLINK_NES={args={}},
+      SMARTJOY_FSS2_SNES={args={"Y"}},
       LOGITECH_F310={args={"X"}},
     })
 
@@ -90,6 +94,7 @@ function setBindings(dong)
       PS3={args={"start"}},
       KEYBMOUSE={args={"p"},name="P"},
       RETROLINK_NES={args={"start"}},
+      SMARTJOY_FSS2_SNES={args={"start"}},
       LOGITECH_F310={args={"start"}},
     })
 
@@ -103,6 +108,7 @@ function setBindings(dong)
       PS3={args={"select"}},
       KEYBMOUSE={args={"m"},name="M"},
       RETROLINK_NES={args={"select"}},
+      SMARTJOY_FSS2_SNES={args={"select"}},
       LOGITECH_F310={args={"select"}},
     })
 
@@ -126,6 +132,7 @@ function setBindings(dong)
       PS3={args={"LT"}},
       KEYBMOUSE={args={"r"},name="RMB",mouse=true},
       RETROLINK_NES={args={}},
+      SMARTJOY_FSS2_SNES={args={"LB"}},
       LOGITECH_F310={args={"LT"}},
     })
 
@@ -150,6 +157,7 @@ function setBindings(dong)
       PS3={args={"RT","LT"}},
       KEYBMOUSE={args={"l"},name="LMB",mouse=true},
       RETROLINK_NES={args={}},
+      SMARTJOY_FSS2_SNES={args={"RB","RB"}},
       LOGITECH_F310={args={"RT","LT"}},
     })
 
@@ -176,6 +184,7 @@ function setBindings(dong)
       PS3={args={"LSX","LSY"},name="LS"},
       KEYBMOUSE={args={"w","a","s","d"},name="WASD"},
       RETROLINK_NES={args={"X","Y"},name="XY"},
+      SMARTJOY_FSS2_SNES={args={"DX","DY"},name="XY"},
       LOGITECH_F310={args={"LSX","LSY",name="LS"}},
     })
 
@@ -189,6 +198,7 @@ function setBindings(dong)
       PS3={args={"RSX","RSY"},name="RS"},
       KEYBMOUSE={args={"x","y"},name="Mouse",mouse=true},
       RETROLINK_NES={args={}},
+      SMARTJOY_FSS2_SNES={args={}},
       LOGITECH_F310={args={"RSX","RSY",name="RS"}},
     })
 
@@ -219,6 +229,7 @@ function setBindings(dong)
       PS3={args={"DR","DL","DU","DD"},name="dpad"},
       KEYBMOUSE={args={"up","down","left","right"},name="Arrow Keys"},
       RETROLINK_NES={args={}},
+      SMARTJOY_FSS2_SNES={args={}},
       LOGITECH_F310={args={"DR","DL","DU","DD"},name="dpad"},
     })
 
