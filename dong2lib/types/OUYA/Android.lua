@@ -16,9 +16,9 @@ controller.maps = {
   DD = {type="button",value=13},
   LSX= {type="axis",min=-1,default=0,max=1,value=1},
   LSY= {type="axis",min=-1,default=0,max=1,value=2},
-  LT= {type="axis",min=-1,default=-1,max=1,value=3},
-  RSX= {type="axis",min=-1,default=0,max=1,value=4},
-  RSY= {type="axis",min=-1,default=0,max=1,value=5},
+  RSX= {type="axis",min=-1,default=0,max=1,value=3},
+  RSY= {type="axis",min=-1,default=0,max=1,value=4},
+  LT= {type="axis",min=-1,default=-1,max=1,value=5},
   RT= {type="axis",min=-1,default=-1,max=1,value=6},
 }
 
