@@ -32,6 +32,7 @@ function setBindings(dong)
       RETROLINK_NES={args={"A"}},
       SMARTJOY_FSS2_SNES={args={"A"}},
       LOGITECH_F310={args={"A"}},
+      AMAZON_FIRE_GAME_CONTROLLER={args={"A"}},
     })
 
   dong:setBind("cancel",
@@ -46,6 +47,7 @@ function setBindings(dong)
       RETROLINK_NES={args={"B"}},
       SMARTJOY_FSS2_SNES={args={"B"}},
       LOGITECH_F310={args={"B"}},
+      AMAZON_FIRE_GAME_CONTROLLER={args={"B"}},
     })
 
   dong:setBind("info",
@@ -60,6 +62,7 @@ function setBindings(dong)
       RETROLINK_NES={args={}},
       SMARTJOY_FSS2_SNES={args={"X"}},
       LOGITECH_F310={args={"Y"}},
+      AMAZON_FIRE_GAME_CONTROLLER={args={"Y"}},
     })
 
   dong:setBind("reload",
@@ -74,6 +77,7 @@ function setBindings(dong)
       RETROLINK_NES={args={}},
       SMARTJOY_FSS2_SNES={args={"Y"}},
       LOGITECH_F310={args={"X"}},
+      AMAZON_FIRE_GAME_CONTROLLER={args={"X"}},
     })
 
   -- SPECIAL XBOX BUTTONS 
@@ -96,6 +100,7 @@ function setBindings(dong)
       RETROLINK_NES={args={"start"}},
       SMARTJOY_FSS2_SNES={args={"start"}},
       LOGITECH_F310={args={"start"}},
+      AMAZON_FIRE_GAME_CONTROLLER={args={"back"}},
     })
 
   dong:setBind("menu",
@@ -110,6 +115,7 @@ function setBindings(dong)
       RETROLINK_NES={args={"select"}},
       SMARTJOY_FSS2_SNES={args={"select"}},
       LOGITECH_F310={args={"select"}},
+      AMAZON_FIRE_GAME_CONTROLLER={args={"menu"}},
     })
 
   -- TRIGGERS
@@ -134,6 +140,7 @@ function setBindings(dong)
       RETROLINK_NES={args={}},
       SMARTJOY_FSS2_SNES={args={"LB"}},
       LOGITECH_F310={args={"LT"}},
+      AMAZON_FIRE_GAME_CONTROLLER={args={"LT"}},
     })
 
   dong:setBind("shoot",
@@ -159,6 +166,7 @@ function setBindings(dong)
       RETROLINK_NES={args={}},
       SMARTJOY_FSS2_SNES={args={"RB","RB"}},
       LOGITECH_F310={args={"RT","LT"}},
+      AMAZON_FIRE_GAME_CONTROLLER={args={"RT","LT"}},
     })
 
   -- STICKS
@@ -186,6 +194,7 @@ function setBindings(dong)
       RETROLINK_NES={args={"X","Y"},name="XY"},
       SMARTJOY_FSS2_SNES={args={"DX","DY"},name="XY"},
       LOGITECH_F310={args={"LSX","LSY",name="LS"}},
+      AMAZON_FIRE_GAME_CONTROLLER={args={"LSX","LSY",name="LS"}},
     })
 
   dong:setBind("aim",
@@ -200,6 +209,7 @@ function setBindings(dong)
       RETROLINK_NES={args={}},
       SMARTJOY_FSS2_SNES={args={}},
       LOGITECH_F310={args={"RSX","RSY",name="RS"}},
+      AMAZON_FIRE_GAME_CONTROLLER={args={"RSX","RSY",name="RS"}},
     })
 
   -- DPAD
@@ -208,6 +218,7 @@ function setBindings(dong)
     function(self,data)
       local x,y = 0,0
       if self._type == "LOGITECH_F310" or
+        self._type == "AMAZON_FIRE_GAME_CONTROLLER" or
         self._type == "XBOX_360_WIRED" then
         if string.sub(data[1],1,1)   == "r" then x = x + 1 end
         if string.sub(data[2],1,1)   == "l" then x = x - 1 end
@@ -231,6 +242,7 @@ function setBindings(dong)
       RETROLINK_NES={args={}},
       SMARTJOY_FSS2_SNES={args={}},
       LOGITECH_F310={args={"DR","DL","DU","DD"},name="dpad"},
+      AMAZON_FIRE_GAME_CONTROLLER={args={"DR","DL","DU","DD",name="LS"}},
     })
 
 end
@@ -241,7 +253,7 @@ function love.update(dt)
   end
 end
 
-function love.keypressed(key)
+function love.keypressed(key) -- OUYA MENU
    for _,dong in pairs(dongs) do
     dong:keypressed(key)
   end

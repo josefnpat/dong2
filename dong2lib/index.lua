@@ -28,6 +28,9 @@ local index = {
   ARCHOS_GAMEPAD2 = {
     "joy_key"
   },
+  AMAZON_FIRE_GAME_CONTROLLER = {
+    "Amazon Fire Game Controller",
+  }
 }
 
 return index
