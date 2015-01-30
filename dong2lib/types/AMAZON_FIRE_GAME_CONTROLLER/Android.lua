@@ -20,8 +20,8 @@ controller.maps = {
   DD = {type="hat",value=1},
   LSX= {type="axis",min=-1,default=0,max=1,value=1},
   LSY= {type="axis",min=-1,default=0,max=1,value=2},
-  RSX= {type="axis",min=-1,default=0,max=1,value=4},
-  RSY= {type="axis",min=-1,default=0,max=1,value=5},
+  RSX= {type="axis",min=-1,default=0,max=1,value=3},
+  RSY= {type="axis",min=-1,default=0,max=1,value=4},
   RT= {type="axis",min=-1,default=-1,max=1,value=5},
   LT= {type="axis",min=-1,default=-1,max=1,value=6},
 }
