@@ -19,6 +19,7 @@ local index = {
     "Sony PLAYSTATION(R)3 Controller" -- EVERYONE ELSE
   },
   RETROLINK_NES = {"USB Gamepad "},
+  BUFFALO_BSGP801 = {"USB,2-axis 8-button gamepad  "},
   SMARTJOY_FSS2_SNES = {"Smartjoy Family Super Smartjoy 2"},
   LOGITECH_F310 = {
     "Generic X-Box pad",
